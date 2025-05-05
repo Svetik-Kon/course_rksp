@@ -1,0 +1,59 @@
+/* Расширяем контейнер на всю ширину и центрируем контент */
+.add-form-container {
+    max-width: 100%;
+    padding: 40px 20px;
+    color: white;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+  
+  /* Ссылка Назад — фиксированная позиция в верхнем левом углу */
+  .back-link {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #8b5cf6;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  /* Заголовок по центру */
+  .form-title {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  /* Обертка для полей формы */
+  .form-fields {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Одинаковый стиль для всех инпутов и select */
+  .form-fields input,
+  .form-fields select {
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: 1px solid #666;
+    border-radius: 4px;
+    min-width: 200px;
+    flex: 1 1 200px;
+  }
+  
+  /* Кнопка */
+  button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #8b5cf6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  

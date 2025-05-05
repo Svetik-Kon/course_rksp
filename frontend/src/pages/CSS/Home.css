@@ -1,0 +1,60 @@
+.home-container {
+    width: 100vw; /* растягиваем на всю ширину */
+    height: 100vh;
+    background-color: #1e1e1e;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    overflow-x: hidden; /* на всякий случай */
+  }
+  
+  
+  .logout-btn {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 1rem;
+    background: #111;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+  
+  .welcome-title {
+    font-size: 3rem;
+    color: white;
+    margin-top: 4rem;
+    text-align: center;
+  }
+  
+  .functions-grid {
+    margin-top: 3rem;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    width: 100%;
+    max-width: 700px;
+  }
+  
+  /* 🔲 Квадратики с изображением внутри */
+  .function-tile {
+    background-image: url('C:\Users\sveti\Desktop\curse_rksp\frontend\src\assets\book.png'); /* файл положи в public/ и переименуй как хочешь */
+    background-size: cover;
+    background-position: center;
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
+  }
+  
+  .function-tile:hover {
+    transform: scale(1.03);
+  }
+  
