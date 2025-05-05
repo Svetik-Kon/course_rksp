@@ -2,7 +2,7 @@ services:
   - type: web
     name: auth-service
     env: docker
-    repo: https://github.com/ТВОЙ_ЛОГИН/course_rksp
+    repo: https://github.com/Svetik-Kon/course_rksp
     region: frankfurt
     plan: free
     dockerfilePath: ./services/auth-service/Dockerfile
@@ -15,7 +15,7 @@ services:
   - type: web
     name: book-service
     env: docker
-    repo: https://github.com/ТВОЙ_ЛОГИН/course_rksp
+    repo: https://github.com/Svetik-Kon/course_rksp
     region: frankfurt
     plan: free
     dockerfilePath: ./services/book-service/Dockerfile
@@ -26,7 +26,7 @@ services:
   - type: web
     name: backend
     env: docker
-    repo: https://github.com/ТВОЙ_ЛОГИН/course_rksp
+    repo: https://github.com/Svetik-Kon/course_rksp
     region: frankfurt
     plan: free
     dockerfilePath: ./backend/Dockerfile
@@ -39,7 +39,7 @@ services:
   - type: web
     name: frontend
     env: docker
-    repo: https://github.com/ТВОЙ_ЛОГИН/course_rksp
+    repo: https://github.com/Svetik-Kon/course_rksp
     region: frankfurt
     plan: free
     dockerfilePath: ./frontend/Dockerfile
