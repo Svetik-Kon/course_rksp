@@ -1,0 +1,45 @@
+services:
+  - type: web
+    name: auth-service
+    env: docker
+    repo: https://github.com/ТВОЙ_ЛОГИН/course_rksp
+    region: frankfurt
+    plan: free
+    dockerfilePath: ./services/auth-service/Dockerfile
+    envVars:
+      - key: DATABASE_URL
+        value: postgres://user:password@auth-db:5432/authdb
+      - key: JWT_SECRET
+        value: super-secret-key
+
+  - type: web
+    name: book-service
+    env: docker
+    repo: https://github.com/ТВОЙ_ЛОГИН/course_rksp
+    region: frankfurt
+    plan: free
+    dockerfilePath: ./services/book-service/Dockerfile
+    envVars:
+      - key: DATABASE_URL
+        value: postgres://user:password@book-db:5432/bookdb
+
+  - type: web
+    name: backend
+    env: docker
+    repo: https://github.com/ТВОЙ_ЛОГИН/course_rksp
+    region: frankfurt
+    plan: free
+    dockerfilePath: ./backend/Dockerfile
+    envVars:
+      - key: BOOK_SERVICE_URL
+        value: http://book-service:3002
+      - key: JWT_SECRET
+        value: super-secret-key
+
+  - type: web
+    name: frontend
+    env: docker
+    repo: https://github.com/ТВОЙ_ЛОГИН/course_rksp
+    region: frankfurt
+    plan: free
+    dockerfilePath: ./frontend/Dockerfile
