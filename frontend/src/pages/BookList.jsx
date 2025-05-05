@@ -8,7 +8,7 @@ export default function BookList() {
   const [search, setSearch] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:3000/items', {
+    axios.get('${process.env.REACT_APP_API_URL}/items', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }

@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const BOOK_SERVICE_URL = 'http://localhost:3002';
+const BOOK_SERVICE_URL = '${BOOK_SERVICE_URL}';
 
 // 🔒 Получить все товары (книги и канцелярию)
 app.get('/items', verifyToken(), async (req, res) => {

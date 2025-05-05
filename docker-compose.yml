@@ -1,39 +1,65 @@
 version: '3.8'
 
 services:
-  db:
-    image: postgres
-    restart: always
+  auth-db:
+    image: postgres:15
+    container_name: auth-db
     environment:
+      POSTGRES_DB: authdb
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: bookstore
-    ports:
-      - "5432:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - auth_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
 
-  # book-service:
-  #   build: ./services/book-service
-  #   ports:
-  #     - "3002:3002"
-  #   depends_on:
-  #     - db
+  book-db:
+    image: postgres:15
+    container_name: book-db
+    environment:
+      POSTGRES_DB: bookdb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - book_data:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
 
-  # backend:
-  #   build: ./backend
-  #   ports:
-  #     - "3000:3000"
-  #   depends_on:
-  #     - book-service
+  auth-service:
+    build: ./services/auth-service
+    ports:
+      - "3001:3001"
+    env_file:
+      - ./services/auth-service/.env
+    depends_on:
+      - auth-db
 
-  # frontend:
-  #   build: ./frontend
-  #   ports:
-  #     - "5173:5173"
-  #   depends_on:
+  book-service:
+    build: ./services/book-service
+    ports:
+      - "3002:3002"
+    env_file:
+      - ./services/book-service/.env
+    depends_on:
+      - book-db
 
-  #     - backend
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - auth-service
+      - book-service
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
 
 volumes:
-  pgdata:
+  auth_data:
+  book_data:

@@ -10,15 +10,15 @@ export default function DeleteBook() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:3002/items/${itemId}`, {
+      await axios.delete(`${process.env.REACT_APP_API_URL}/items/${itemId}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         }
       });
-      toast.success('✅ Товар успешно удалён');
+      toast.success(' Товар успешно удалён');
       setItemId('');
     } catch (err) {
-      toast.error('❌ Ошибка при удалении товара');
+      toast.error(' Ошибка при удалении товара');
     }
   };
 

@@ -13,7 +13,7 @@ export default function UserManagement() {
 
   const handleCreate = async () => {
     try {
-      await axios.post('http://localhost:3001/register', {
+      await axios.post('${process.env.REACT_APP_API_URL}/register', {
         email,
         password,
         role,
@@ -29,7 +29,7 @@ export default function UserManagement() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:3001/users/${deleteEmail}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/users/${deleteEmail}`);
       toast.success('Пользователь успешно удалён');
       setDeleteEmail('');
     } catch (error) {
