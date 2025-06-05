@@ -1,8 +1,6 @@
 version: '3.8'
 
 services:
-
-  # База данных для авторизации
   auth-db:
     image: postgres:15
     container_name: auth-db
@@ -15,7 +13,6 @@ services:
     ports:
       - "5433:5432"
 
-  # База данных для товаров
   book-db:
     image: postgres:15
     container_name: book-db
@@ -28,7 +25,6 @@ services:
     ports:
       - "5434:5432"
 
-  # Сервис авторизации
   auth-service:
     build: ./services/auth-service
     env_file:
@@ -38,7 +34,6 @@ services:
     ports:
       - "3001:3001"
 
-  # Сервис товаров
   book-service:
     build: ./services/book-service
     env_file:
@@ -48,7 +43,6 @@ services:
     ports:
       - "3002:3002"
 
-  # Backend (API Gateway)
   backend:
     build: ./backend
     env_file:
@@ -59,13 +53,24 @@ services:
     ports:
       - "3000:3000"
 
-  # Фронтенд (сборка React + Nginx)
   frontend:
     build: ./frontend
     ports:
       - "3020:80"
     depends_on:
       - backend
+
+  init:
+    build: ./init
+    depends_on:
+      - auth-service
+      - book-service
+    entrypoint: ["/bin/sh", "-c", "/app/init.sh"]
+    volumes:
+      - ./init:/app
+      - ./services/auth-service:/auth-service
+      - ./services/book-service:/book-service
+
 
 volumes:
   auth_data:

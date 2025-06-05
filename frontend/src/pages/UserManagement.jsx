@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import { Link } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -29,7 +29,12 @@ export default function UserManagement() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`api/users/${deleteEmail}`);
+      const token = localStorage.getItem('token');
+      await axios.delete(`api/users/${deleteEmail}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       toast.success('Пользователь успешно удалён');
       setDeleteEmail('');
     } catch (error) {

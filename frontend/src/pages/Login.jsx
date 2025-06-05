@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import { useNavigate } from 'react-router-dom';
 import './CSS/Login.css'; // подключение CSS
 import loginImage from '../assets/fon.png';
