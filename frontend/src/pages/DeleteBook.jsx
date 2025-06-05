@@ -10,7 +10,7 @@ export default function DeleteBook() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`${process.env.REACT_APP_API_URL}/items/${itemId}`, {
+      await axios.delete(`api/items/${itemId}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         }

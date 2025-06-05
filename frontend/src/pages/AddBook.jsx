@@ -21,7 +21,7 @@ export default function AddBook() {
 
   const handleSave = async () => {
     try {
-      await axios.post('${process.env.REACT_APP_API_URL}/items', {
+      await axios.post('api/items', {
         category,
         ...formData,
         price: parseFloat(formData.price),
